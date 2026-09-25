@@ -14,13 +14,15 @@ const initials = (text) => text.split(" ").map(x=>x[0]).slice(0,2).join("");
 
 export default function DashboardWelcome(){
   const router=useRouter(); const [user,setUser]=useState(null); const [tab,setTab]=useState("overview"); const [query,setQuery]=useState("");
-  const [tasks,setTasks]=useState(initialTasks); const [selected,setSelected]=useState(null); const [toast,setToast]=useState("");
+  const [tasks,setTasks]=useState(initialTasks); const [selected,setSelected]=useState(null); const [toast,setToast]=useState(""); const [activityType,setActivityType]=useState("All");
   useEffect(()=>{const session=localStorage.getItem("clario-session");if(!session)router.replace("/signin");else setUser(JSON.parse(session));const saved=localStorage.getItem("clario-tasks");if(saved)setTasks(JSON.parse(saved))},[router]);
   useEffect(()=>{if(user)localStorage.setItem("clario-tasks",JSON.stringify(tasks))},[tasks,user]);
   useEffect(()=>{if(toast){const id=setTimeout(()=>setToast(""),2200);return()=>clearTimeout(id)}},[toast]);
+  useEffect(()=>{const openActivity=event=>{setActivityType(event.detail||"All");setTab("activity");setSelected(null);setQuery("")};window.addEventListener("clario-open-activity",openActivity);return()=>window.removeEventListener("clario-open-activity",openActivity)},[]);
   const pipeline=deals.reduce((s,d)=>s+d.amount,0), contracted=deals.filter(d=>d.stage==="Contract sent").reduce((s,d)=>s+d.amount,0);
   const search=(items,fn)=>items.filter(x=>fn(x).toLowerCase().includes(query.toLowerCase()));
-  const changeTab=(id)=>{setTab(id);setSelected(null);setQuery("")};
+const changeTab=(id)=>{setTab(id);setSelected(null);setQuery("");if(id!=="activity")setActivityType("All")};
+  const openActivityType=(type)=>{setActivityType(type);setTab("activity");setSelected(null);setQuery("")};
   const create=()=>setToast("Create form opened for this section");
   if(!user)return <main className="crm-loading">Loading CRM…</main>;
   return <div className={tab==="tasks"?"nexa-app tasks-active":tab==="activity"?"nexa-app activity-active":tab==="analytics"?"nexa-app analytics-active":"nexa-app"}><aside className="nexa-side"><button className="nexa-logo" onClick={()=>changeTab("overview")}><Image src="/logo.png" alt="Clario" width={105} height={62}/></button><small>WORKSPACE</small><nav>{nav.slice(0,4).map(([id,icon])=><Nav key={id} id={id} icon={icon} tab={tab} go={changeTab}/>)}</nav><small>ACTIVITY</small><nav>{nav.slice(4,6).map(([id,icon])=><Nav key={id} id={id} icon={icon} tab={tab} go={changeTab}/>)}</nav><small>INSIGHTS</small><nav><Nav id="analytics" icon="▥" tab={tab} go={changeTab}/></nav><div className="nexa-side-foot"><button>⚙ Settings</button><div><span>{user.name[0]}</span><p><b>{user.name}</b><small>{user.company}</small></p></div></div></aside>
