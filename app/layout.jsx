@@ -4,6 +4,9 @@ import "./auth.css";
 import "./dashboard.css";
 import "./dashboard-theme.css";
 import "./interactions.css";
+import "./deal-detail.css";
+import "./profile.css";
+import "./settings.css";
 
 export const metadata = { title: "Clario CRM — Customer relationships, made clear", description: "A modern CRM workspace for leads, relationships, and revenue." };
 

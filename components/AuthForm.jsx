@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 async function hashPassword(value) {
   const bytes = new TextEncoder().encode(value);
@@ -18,6 +18,10 @@ export default function AuthForm({ mode }) {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("clario-session")) router.replace("/dashboard");
+  }, [router]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -51,7 +55,7 @@ export default function AuthForm({ mode }) {
       }
       localStorage.setItem("clario-session", JSON.stringify({ name: user.name, company: user.company, email }));
     }
-    router.push("/dashboard");
+    router.replace("/dashboard");
   }
 
   function handleForgotPassword() {
