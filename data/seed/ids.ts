@@ -1,0 +1,10 @@
+export const id = (type: string, n: number) => `${type}_${String(n).padStart(3, "0")}`;
+export const companyId = (n: number) => id("company", n);
+export const contactId = (n: number) => id("contact", n);
+export const dealId = (n: number) => id("deal", n);
+export const taskId = (n: number) => id("task", n);
+export const emailId = (n: number) => id("email", n);
+export const noteId = (n: number) => id("note", n);
+export const callId = (n: number) => id("call", n);
+export const productId = (n: number) => id("product", n);
+export const lineItemId = (n: number) => id("lineitem", n);

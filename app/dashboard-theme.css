@@ -1,0 +1,189 @@
+/* Clario landing-page theme applied to the authenticated CRM. */
+.nexa-app {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* The landing page intentionally uses tight display lettering. Reset that
+   global treatment inside the data-dense dashboard to prevent collisions. */
+.nexa-app h1,
+.nexa-app h2,
+.nexa-app h3,
+.nexa-app h4,
+.nexa-app h5,
+.nexa-app h6 {
+  max-width: 100%;
+  font-family: var(--display);
+  font-style: normal;
+  font-kerning: normal;
+  letter-spacing: normal;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.nexa-app h2,
+.nexa-app h3,
+.nexa-app h4 {
+  margin-top: 0;
+}
+
+.page-hero h1 {
+  letter-spacing: -1.3px;
+  line-height: 1.12;
+}
+
+.data-panel > h2,
+.pipeline-board section > header h3,
+.company-grid h2,
+.pipeline-board article h4 {
+  display: block;
+  width: 100%;
+  white-space: normal;
+  word-spacing: normal;
+}
+
+.data-panel > h2 {
+  margin-bottom: 5px;
+}
+
+.data-panel > h2 + p {
+  clear: both;
+  margin-top: 0;
+}
+
+.nexa-side {
+  background: linear-gradient(180deg, #17181e 0%, #111217 100%);
+  color: #b9bac1;
+}
+
+.nexa-side > small {
+  color: #6f7078;
+}
+
+.nexa-side nav button,
+.nexa-side-foot button {
+  color: #bbbcc3;
+}
+
+.nexa-side nav button:hover,
+.nexa-side nav button.active {
+  background: linear-gradient(90deg, var(--red), #d93439);
+  border-left-color: #ffb1b3;
+  color: #fff;
+}
+
+.nexa-side-foot {
+  border-top-color: #303138;
+}
+
+.nexa-side-foot > div > span {
+  background: var(--red);
+}
+
+.nexa-top {
+  border-bottom-color: var(--line);
+}
+
+.nexa-top .create,
+.page-hero > button {
+  background: var(--red);
+  box-shadow: 0 10px 24px #ed3f4325;
+}
+
+.nexa-top .create:hover,
+.page-hero > button:hover {
+  background: #d93439;
+}
+
+.nexa-top .avatar {
+  background: #17181e;
+}
+
+.page-hero small,
+.company-grid article > button,
+.people-list button,
+.timeline a,
+.back {
+  color: var(--red);
+}
+
+.metric-grid > article,
+.data-panel,
+.company-grid article,
+.people-list,
+.pipeline-board article,
+.task-list,
+.timeline,
+.task-metrics > article {
+  border-color: var(--line);
+}
+
+.metric-grid article i {
+  color: var(--red);
+  background: #fff0f0;
+}
+
+.pipeline-lines span i,
+.top-bars i b,
+.trend i {
+  background: linear-gradient(90deg, #f36a6e, var(--red));
+}
+
+.company-grid header b,
+.people-list article > b,
+.top-companies button > b {
+  color: var(--red);
+  background: #fff0f0;
+}
+
+.company-grid em {
+  color: #257a55;
+  background: #e8f7ef;
+}
+
+.pipeline-board > section {
+  background: #f3f1ef;
+}
+
+.pipeline-board > section:nth-child(1) {
+  border-top: 3px solid #f4a3a5;
+}
+
+.pipeline-board > section:nth-child(2) {
+  border-top: 3px solid #ef686d;
+}
+
+.pipeline-board > section:nth-child(3) {
+  border-top: 3px solid var(--red);
+}
+
+.pipeline-board section > header b {
+  background: #f8dfe0;
+  color: #ad292e;
+}
+
+.view-tabs b,
+.view-tabs .active {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+.donut {
+  background: conic-gradient(var(--red) 0 33%, #17181e 33% 66%, #f0a1a4 66%);
+}
+
+.crm-toast {
+  background: #17181e;
+  border-left: 4px solid var(--red);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #ed3f4335;
+  outline-offset: 2px;
+}
+
+.contact-profile{display:flex;align-items:center;gap:16px;margin:5px 0 28px}.contact-profile>span{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#fff0f0;color:var(--red);font-size:17px;font-weight:700}.contact-profile>div:nth-child(2){flex:1}.contact-profile small{display:inline-block;padding:4px 8px;border-radius:10px;background:#e8f7ef;color:#287b57;font-weight:700}.contact-profile h1{font-size:27px;margin:7px 0 3px}.contact-profile p{margin:0;color:#85858f}.contact-actions{display:flex;gap:9px}.contact-actions a{padding:10px 15px;border:1px solid var(--line);border-radius:7px;background:#fff}.contact-actions a.primary{border-color:var(--red);background:var(--red);color:#fff}.contact-tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-bottom:17px}.contact-tabs button{border:0;background:none;padding:11px 2px;color:#85858f}.contact-tabs button.active{color:var(--red);border-bottom:2px solid var(--red)}.contact-overview{display:grid;grid-template-columns:1.45fr 1fr;gap:14px;margin-bottom:14px}.contact-info,.related-deals{padding:20px}.info-row{display:flex;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--line)}.info-row:first-of-type{margin-top:13px}.info-row i{width:22px;color:#777;font-style:normal}.info-row p{display:grid;margin:0}.info-row small{color:#999}.related-deals>p{margin:5px 0 12px;color:#999}.related-deals article{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-top:1px solid var(--line)}.related-deals article div{display:grid}.related-deals article small{color:#999;margin-top:4px}.contact-detail-list{padding:20px;margin-top:14px}.contact-detail-list>article{display:grid;grid-template-columns:38px 1fr 120px;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--line)}.contact-detail-list>article>b{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;background:#fff0f0;color:var(--red)}.contact-detail-list>article>div{display:grid}.contact-detail-list article small{color:#92929a;margin-top:4px}.contact-detail-list article>span{color:#6d6d76}.empty-related{padding:30px 0;color:#999;text-align:center}@media(max-width:700px){.contact-profile{align-items:flex-start;flex-wrap:wrap}.contact-actions{width:100%}.contact-tabs{overflow-x:auto}.contact-overview{grid-template-columns:1fr}.contact-detail-list>article{grid-template-columns:38px 1fr}.contact-detail-list article>span{grid-column:2}}

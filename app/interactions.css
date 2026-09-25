@@ -1,0 +1,83 @@
+/* Shared hover and focus language across the Clario experience. */
+:where(a, button, input, select, textarea, [role="button"]) {
+  transition: color 160ms ease, background-color 160ms ease,
+    border-color 160ms ease, box-shadow 160ms ease,
+    opacity 160ms ease, transform 160ms ease;
+}
+
+:where(a, button, [role="button"]):not(:disabled) {
+  cursor: pointer;
+}
+
+:where(.button, .auth-submit, .crm-add, .create, .page-hero > button,
+  .contact-actions a):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px #ed3f4330;
+}
+
+:where(.button, .auth-submit, .crm-add, .create, .page-hero > button,
+  .contact-actions a):active {
+  transform: translateY(0) scale(.98);
+}
+
+:where(.feature, .stat-card, .company-grid article, .pipeline-board article,
+  .task-list article, .timeline article, .people-list article,
+  .top-companies button, .compact-activity > div):hover {
+  position: relative;
+  z-index: 1;
+  transform: translateY(-2px);
+  border-color: #ed3f4355;
+  box-shadow: 0 12px 28px #17181e12;
+}
+
+.people-list article:hover,
+.task-list article:hover,
+.timeline article:hover,
+.compact-activity > div:hover,
+.top-companies button:hover {
+  background: #fff7f7;
+}
+
+.nexa-side nav button:hover {
+  transform: translateX(2px);
+}
+
+.contact-tabs button:hover,
+.view-tabs button:hover,
+.company-grid article > button:hover,
+.people-list article > button:hover,
+.panel-title button:hover,
+.back:hover {
+  color: #d93439;
+}
+
+:where(input, select, textarea):hover {
+  border-color: #ed3f4366;
+}
+
+:where(input, select, textarea):focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 4px #ed3f4315;
+}
+
+:where(a, button, input, select, textarea, [role="button"]):focus-visible {
+  outline: 3px solid #ed3f4340;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(*, *::before, *::after) {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
+  :where(a, button, .feature, .stat-card, .company-grid article,
+    .pipeline-board article, .people-list article):hover {
+    transform: none;
+  }
+}

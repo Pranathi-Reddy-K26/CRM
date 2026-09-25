@@ -1,0 +1,4 @@
+import { seed } from "./index";
+export const companyRelationships=Object.fromEntries(seed.companies.map(c=>[c.id,{contacts:seed.contacts.filter(x=>x.companyId===c.id).map(x=>x.id),deals:seed.deals.filter(x=>x.companyId===c.id).map(x=>x.id),notes:seed.notes.filter(x=>x.companyId===c.id).map(x=>x.id)}]));
+export const contactRelationships=Object.fromEntries(seed.contacts.map(c=>[c.id,{companyId:c.companyId,emails:seed.emails.filter(x=>x.contactId===c.id).map(x=>x.id),calls:seed.calls.filter(x=>x.contactId===c.id).map(x=>x.id)}]));
+export const dealRelationships=Object.fromEntries(seed.deals.map(d=>[d.id,{companyId:d.companyId,tasks:seed.tasks.filter(x=>x.dealId===d.id).map(x=>x.id),notes:seed.notes.filter(x=>x.dealId===d.id).map(x=>x.id),lineItems:seed.lineItems.filter(x=>x.dealId===d.id).map(x=>x.id)}]));
