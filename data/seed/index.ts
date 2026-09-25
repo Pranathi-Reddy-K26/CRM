@@ -15,9 +15,15 @@ const roles=["VP of Operations","Product Director","Head of Revenue","IT Directo
 export const contacts=people.map(([first,last],i)=>{const company=companies[Math.floor(i/2)];return {id:contactId(i+1),first,last,name:`${first} ${last}`,email:`${first.toLowerCase()}.${last.toLowerCase()}@${company.domain}`,companyId:company.id,company:company.name,domain:company.domain,phone:`+1 555 ${3000+i*41}`,favorite:["Coffee","Waffles","Tea","Pasta"][i%4],role:roles[i%roles.length]}});
 
 const dealNames=["Enterprise Platform Expansion","Annual Analytics License","Customer Data Migration","Premium Support Upgrade","CRM Automation Rollout","Workflow Modernization","Security Review Package","Customer Portal Launch"];
-const stages=["Appointment scheduled","Qualified to buy","Contract sent"];
-const amounts=[8000,18000,32000,45000,58000,75000,96000,120000,145000,180000];
-export const deals=Array.from({length:30},(_,i)=>{const company=companies[i%12];return {id:dealId(i+1),name:dealNames[i%8],companyId:company.id,company:company.name,domain:company.domain,pipeline:"Sales pipeline",stage:stages[i%3],amount:amounts[(i*3)%10],close:new Date(2026,8-(i%6),28-(i%18)).toISOString().slice(0,10)}});
+// The seed follows a believable funnel: more early-stage opportunities and
+// fewer, higher-value late-stage opportunities. The varied close months keep
+// Overview charts useful without changing any normalized relationship keys.
+const dealPlan = [
+  ...[18000,24000,30000,36000,42000,48000,55000,62000,68000,75000,82000,90000].map(amount=>({stage:"Appointment scheduled",amount})),
+  ...[45000,55000,65000,75000,85000,95000,105000,115000,125000,140000].map(amount=>({stage:"Qualified to buy",amount})),
+  ...[90000,110000,130000,150000,175000,200000,225000,250000].map(amount=>({stage:"Contract sent",amount})),
+];
+export const deals=dealPlan.map(({stage,amount},i)=>{const company=companies[i%12];return {id:dealId(i+1),name:dealNames[i%8],companyId:company.id,company:company.name,domain:company.domain,pipeline:"Sales pipeline",stage,amount,close:new Date(2026,3+(i%6),8+((i*3)%20)).toISOString().slice(0,10)}});
 
 const noteTexts=["Client requested a revised implementation timeline.","Decision makers want a deeper security review before moving forward.","Customer asked whether onboarding can be split across two phases.","Follow-up required with procurement team.","Technical team approved the proposed integration approach.","Budget review is scheduled with the finance lead."];
 export const notes=Array.from({length:42},(_,i)=>{const deal=deals[i%30];return {id:noteId(i+1),companyId:deal.companyId,dealId:deal.id,company:deal.company,deal:deal.name,body:noteTexts[i%6],date:new Date(2026,8-(i%7),25-(i%20)).toISOString().slice(0,10)}});
