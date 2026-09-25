@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { calls, companies, contacts, deals, emails, notes } from "@/data/seed";
 
 const types = ["All", "Email", "Call", "Task", "Note"];
@@ -105,20 +105,14 @@ function ActivityEvent({ item, open, onToggle, latest, today, yesterday }) {
   </article>;
 }
 
-export default function ActivityWorkspace({ tasks, initialType = "All" }) {
-  const [type, setType] = useState(initialType);
+export default function ActivityWorkspace({ tasks }) {
+  const [type, setType] = useState("All");
   const [search, setSearch] = useState("");
   const [dateRange, setDateRange] = useState("Any date");
   const [companyId, setCompanyId] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   const [filterOpen, setFilterOpen] = useState(false);
   const [expanded, setExpanded] = useState(null);
-  useEffect(() => { setType(initialType); setSelectedDay(""); setSearch(""); }, [initialType]);
-  useEffect(() => {
-    const openFiltered = event => setType(event.detail || "All");
-    window.addEventListener("clario-open-activity", openFiltered);
-    return () => window.removeEventListener("clario-open-activity", openFiltered);
-  }, []);
   const todayDate = new Date();
   const today = dayKey(todayDate);
   const yesterday = dayKey(shiftDay(todayDate, -1));

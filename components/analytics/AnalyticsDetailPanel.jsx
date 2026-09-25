@@ -29,7 +29,7 @@ export default function AnalyticsDetailPanel({ selection, model, onClose, onView
     }
   };
 
-  return <div className="au-detail-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }} onKeyDown={event => { if (event.key === "Escape") onClose(); }}>
+  return <div className="au-detail-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) onClose(); }}>
     <aside ref={dialogRef} className="au-detail" role="dialog" aria-modal="true" aria-label={`${company?.name || deal?.name} details`} onKeyDown={keepFocus}>
       <div className="au-detail-top"><span>{company ? "COMPANY PROFILE" : "OPPORTUNITY"}</span><button ref={closeRef} aria-label="Close details" onClick={onClose}>×</button></div>
       <h2>{company?.name || deal?.name}</h2>
@@ -46,7 +46,7 @@ export default function AnalyticsDetailPanel({ selection, model, onClose, onView
         <div className="au-detail-facts"><span><b>{company.contacts}</b> contacts</span><span><b>{company.activity}</b> linked activities</span></div>
         <h3>RECENT ACTIVITY</h3>
         <div className="au-detail-activity">{company.recentActivity.map(item => <div key={item.id}><span><b>{item.title}</b><small>{item.description}</small></span><time dateTime={item.date}>{closeLabel(item.date)}</time></div>)}</div>
-        <button className="au-detail-action" onClick={() => onViewCompany({ id: company.id, name: company.name, domain: company.domain, city: company.city, industry: company.industry })}>View company ↗</button>
+        <button className="au-detail-action" onClick={() => onViewCompany(company)}>View company ↗</button>
       </> : <>
         <h3>DEAL DETAILS</h3>
         <div className="au-detail-facts au-deal-facts"><span>Stage <b>{deal.stage}</b></span><span>Expected close <b>{closeLabel(deal.close)}</b></span><span>Company <b>{companyForDeal?.name}</b></span></div>
