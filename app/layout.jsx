@@ -8,6 +8,7 @@ import "./command-center.css";
 import "./companies.css";
 import "./contacts.css";
 import "./contact-workspace.css";
+import "./analytics.css";
 
 export const metadata = { title: "Clario CRM — Customer relationships, made clear", description: "A modern CRM workspace for leads, relationships, and revenue." };
 
